@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sync-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sync-service
+  template:
+    metadata:
+      labels:
+        app: sync-service
+    spec:
+      containers:
+      - name: sync-service
+        image: sync-service:latest
+        env:
+        - name: AWS_REGION
+          value: "us-east-1"
+        - name: KAFKA_BROKER
+          valueFrom:
+            secretKeyRef:
+              name: kafka-secrets
+              key: broker
+        - name: KAFKA_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: kafka-secrets
+              key: api-key
+        - name: KAFKA_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: kafka-secrets
+              key: api-secret

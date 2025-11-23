@@ -1,0 +1,9 @@
+{
+    "name": "sync-service",
+    "version": "1.0.0",
+    "main": "index.js",
+    "dependencies": {
+        "kafkajs": "^2.2.4",
+        "aws-sdk": "^2.1450.0"
+    }
+}
