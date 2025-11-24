@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: media-service
-        image: my-repo/media-service:latest
+        image: puranjay3/media-service:latest
         ports:
         - containerPort: 3002
         env:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: analytics-service
-        image: my-repo/analytics-service:latest
+        image: puranjay3/analytics-service:latest
         ports:
         - containerPort: 3004
         env:

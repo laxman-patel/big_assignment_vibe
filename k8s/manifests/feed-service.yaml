@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: feed-service
-        image: my-repo/feed-service:latest
+        image: puranjay3/feed-service:latest
         ports:
         - containerPort: 3003
         env:

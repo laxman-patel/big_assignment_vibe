@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-ui
-        image: my-repo/frontend-ui:latest
+        image: puranjay3/frontend-ui:latest
         ports:
         - containerPort: 80
 ---

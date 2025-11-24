@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth-service
-        image: my-repo/auth-service:latest
+        image: puranjay3/auth-service:latest
         ports:
         - containerPort: 3000
         env:
