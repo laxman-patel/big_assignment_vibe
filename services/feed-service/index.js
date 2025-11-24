@@ -4,22 +4,24 @@ const axios = require('axios');
 
 const app = express();
 const PORT = 3004;
-const POST_SERVICE_URL = 'http://localhost:3002/posts';
+const pool = require('./db');
 
 app.use(cors());
 
 app.get('/feed', async (req, res) => {
     try {
         // In a real app, we'd pass user ID to get personalized feed
-        // Here we just fetch all posts and maybe shuffle or sort them
-        const response = await axios.get(POST_SERVICE_URL);
-        let posts = response.data;
+        // Here we just fetch all posts from the DB
+        const result = await pool.query('SELECT * FROM posts ORDER BY timestamp DESC');
+        let posts = result.rows.map(row => ({
+            ...row,
+            mediaUrl: row.media_url
+        }));
 
-        // Simple recommendation logic: Sort by timestamp descending (newest first)
-        // This is already done by post-service, so let's add a "recommended" flag
+        // Simple recommendation logic: Randomly mark some as recommended
         posts = posts.map(post => ({
             ...post,
-            isRecommended: Math.random() > 0.5 // Randomly mark some as recommended
+            isRecommended: Math.random() > 0.5
         }));
 
         res.json(posts);
