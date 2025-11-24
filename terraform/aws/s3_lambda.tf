@@ -19,7 +19,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "${path.module}/../../services/image-handler/lambda_function.py"
+  source_file = "${path.module}/../../services/media-service/lambda_function.py"
   output_path = "${path.module}/lambda_function.zip"
 }
 
