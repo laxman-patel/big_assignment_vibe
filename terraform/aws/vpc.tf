@@ -24,7 +24,6 @@ resource "aws_subnet" "public_1" {
 
   tags = {
     Name = "clickstream-public-1"
-    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -36,7 +35,6 @@ resource "aws_subnet" "public_2" {
 
   tags = {
     Name = "clickstream-public-2"
-    "kubernetes.io/role/elb" = "1"
   }
 }
 
