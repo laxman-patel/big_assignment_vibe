@@ -62,3 +62,32 @@ resource "aws_route_table_association" "public_2" {
   subnet_id      = aws_subnet.public_2.id
   route_table_id = aws_route_table.public.id
 }
+
+resource "aws_subnet" "private_1" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "${var.region}a"
+
+  tags = {
+    Name = "clickstream-private-1"
+  }
+}
+
+resource "aws_subnet" "private_2" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.4.0/24"
+  availability_zone = "${var.region}b"
+
+  tags = {
+    Name = "clickstream-private-2"
+  }
+}
+
+resource "aws_db_subnet_group" "default" {
+  name       = "clickstream-db-subnet-group"
+  subnet_ids = [aws_subnet.private_1.id, aws_subnet.private_2.id]
+
+  tags = {
+    Name = "My DB subnet group"
+  }
+}

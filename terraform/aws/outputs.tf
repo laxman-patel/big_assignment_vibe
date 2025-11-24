@@ -22,3 +22,11 @@ output "msk_bootstrap_brokers" {
   description = "Plaintext connection host:port pairs"
   value       = aws_msk_cluster.main.bootstrap_brokers
 }
+
+output "rds_endpoint" {
+  value = aws_db_instance.default.endpoint
+}
+
+output "rds_address" {
+  value = aws_db_instance.default.address
+}

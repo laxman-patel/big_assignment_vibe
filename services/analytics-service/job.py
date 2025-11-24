@@ -1,7 +1,10 @@
 from pyflink.datastream import StreamExecutionEnvironment
 from pyflink.table import StreamTableEnvironment, EnvironmentSettings
 
+import os
+
 def log_processing():
+    kafka_bootstrap = os.environ.get('KAFKA_BOOTSTRAP_SERVERS', 'pkc-xxxx.us-east-1.aws.confluent.cloud:9092')
     env = StreamExecutionEnvironment.get_execution_environment()
     env.set_parallelism(1)
     settings = EnvironmentSettings.new_instance().in_streaming_mode().build()
@@ -17,7 +20,7 @@ def log_processing():
         ) WITH (
             'connector' = 'kafka',
             'topic' = 'raw-clicks',
-            'properties.bootstrap.servers' = 'pkc-xxxx.us-east-1.aws.confluent.cloud:9092',
+            'properties.bootstrap.servers' = '{kafka_bootstrap}',
             'properties.group.id' = 'flink-group',
             'scan.startup.mode' = 'latest-offset',
             'format' = 'json'
@@ -25,7 +28,7 @@ def log_processing():
     """)
 
     # Define sink table (Kafka aggregated-results)
-    t_env.execute_sql("""
+    t_env.execute_sql(f"""
         CREATE TABLE aggregated_results (
             window_start TIMESTAMP(3),
             window_end TIMESTAMP(3),
@@ -34,7 +37,7 @@ def log_processing():
         ) WITH (
             'connector' = 'kafka',
             'topic' = 'aggregated-results',
-            'properties.bootstrap.servers' = 'pkc-xxxx.us-east-1.aws.confluent.cloud:9092',
+            'properties.bootstrap.servers' = '{kafka_bootstrap}',
             'format' = 'json'
         )
     """)

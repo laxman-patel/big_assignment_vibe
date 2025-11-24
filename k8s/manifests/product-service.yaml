@@ -20,6 +20,21 @@ spec:
         env:
         - name: AWS_REGION
           value: "us-east-1"
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: rds-secret
+              key: host
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: rds-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rds-secret
+              key: password
 ---
 apiVersion: v1
 kind: Service

@@ -10,6 +10,23 @@ spec:
     repoURL: 'https://prometheus-community.github.io/helm-charts'
     chart: kube-prometheus-stack
     targetRevision: 45.7.1
+    helm:
+      values: |
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: gp2
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 10Gi
+        grafana:
+          persistence:
+            enabled: true
+            storageClassName: gp2
+            size: 2Gi
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
@@ -31,6 +48,15 @@ spec:
     repoURL: 'https://grafana.github.io/helm-charts'
     chart: loki-stack
     targetRevision: 2.9.10
+    helm:
+      values: |
+        loki:
+          persistence:
+            enabled: true
+            storageClassName: gp2
+            size: 10Gi
+        promtail:
+          enabled: true
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: logging
