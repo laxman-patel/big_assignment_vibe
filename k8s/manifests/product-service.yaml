@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: product-service:latest
+        image: puranjay3/product-service:latest
         ports:
         - containerPort: 3001
         env:
