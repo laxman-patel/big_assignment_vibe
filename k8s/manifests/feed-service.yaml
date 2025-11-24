@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feed-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: feed-service
+  template:
+    metadata:
+      labels:
+        app: feed-service
+    spec:
+      containers:
+      - name: feed-service
+        image: my-repo/feed-service:latest
+        ports:
+        - containerPort: 3003
+        env:
+        - name: PORT
+          value: "3003"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: feed-service
+spec:
+  selector:
+    app: feed-service
+  ports:
+    - protocol: TCP
+      port: 3003
+      targetPort: 3003
