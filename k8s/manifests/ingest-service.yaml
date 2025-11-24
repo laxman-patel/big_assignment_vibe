@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ingest-service
-        image: ingest-service:latest
+        image: puranjay3/ingest-service:latest
         ports:
         - containerPort: 3000
         env:

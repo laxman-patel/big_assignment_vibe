@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: audit-service
-        image: audit-service:latest
+        image: puranjay3/audit-service:latest
         env:
         - name: KAFKA_BROKER
           valueFrom:

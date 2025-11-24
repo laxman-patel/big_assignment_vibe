@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: sync-service
-        image: sync-service:latest
+        image: puranjay3/sync-service:latest
         env:
         - name: AWS_REGION
           value: "us-east-1"
