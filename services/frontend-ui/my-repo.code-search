@@ -1,0 +1,34 @@
+# Query: my-repo
+# ContextLines: 1
+
+6 results - 6 files
+
+k8s/manifests/analytics-service.yaml:
+  16        - name: analytics-service
+  17:         image: puranjay9/analytics-service:latest
+  18          ports:
+
+k8s/manifests/auth-service.yaml:
+  16        - name: auth-service
+  17:         image: puranjay9/auth-service:latest
+  18          ports:
+
+k8s/manifests/feed-service.yaml:
+  16        - name: feed-service
+  17:         image: puranjay9/feed-service:latest
+  18          ports:
+
+k8s/manifests/frontend-ui.yaml:
+  16        - name: frontend-ui
+  17:         image: puranjay9/frontend-ui:latest
+  18          ports:
+
+k8s/manifests/media-service.yaml:
+  16        - name: media-service
+  17:         image: puranjay9/media-service:latest
+  18          ports:
+
+k8s/manifests/post-service.yaml:
+  16        - name: post-service
+  17:         image: puranjay9/post-service:latest
+  18          ports:
