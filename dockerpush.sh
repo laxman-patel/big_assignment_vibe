@@ -31,3 +31,7 @@ docker push $DOCKER_USER/audit-service:latest
 # Sync Service
 docker build -t $DOCKER_USER/sync-service:latest ./services/sync-service
 docker push $DOCKER_USER/sync-service:latest
+
+# Injest Service
+docker build -t $DOCKER_USER/ingest-service:latest ./services/ingest-service
+docker push $DOCKER_USER/ingest-service:latest
