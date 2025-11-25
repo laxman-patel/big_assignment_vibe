@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
@@ -31,7 +31,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
-    const fileUrl = `http://localhost:${PORT}/uploads/${req.file.filename}`;
+    // Return relative URL so frontend can access via proxy
+    const fileUrl = `/api/media/uploads/${req.file.filename}`;
     res.json({ url: fileUrl });
 });
 
