@@ -1,4 +1,4 @@
-description: Step-by-step guide to deploy the scalable multi-cloud clickstream application.
+description: Step-by-step guide to deploy the Multi-Cloud Twitter Clone with Clickstream Analytics.
 Deployment Workflow
 This guide outlines the steps to deploy the entire application stack, from infrastructure provisioning to service deployment.
 
@@ -55,6 +55,7 @@ kubectl apply -f k8s/manifests/ingest-service.yaml
 kubectl apply -f k8s/manifests/product-service.yaml
 kubectl apply -f k8s/manifests/audit-service.yaml
 kubectl apply -f k8s/manifests/sync-service.yaml
+
 # Add other service manifests as needed
 Sync Applications:
 
