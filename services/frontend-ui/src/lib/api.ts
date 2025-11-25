@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // In a real environment, these would be environment variables.
 // For local dev with separate ports:
-const AUTH_API_URL = 'http://localhost:3001';
-const POST_API_URL = 'http://localhost:3002';
+const AUTH_API_URL = '/api/auth';
+const POST_API_URL = '/api/posts';
 
 export const authApi = axios.create({
     baseURL: AUTH_API_URL,

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const pool = require('./db');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const SECRET_KEY = 'super-secret-key'; // In prod, use env var
 
 app.use(cors());

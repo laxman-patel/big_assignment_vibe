@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const pool = require('./db');
 
 const app = express();
-const PORT = 3002; // Different port than auth-service (3001)
+const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(bodyParser.json());
