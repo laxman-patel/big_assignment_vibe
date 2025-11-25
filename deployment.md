@@ -55,6 +55,7 @@ kubectl apply -f k8s/manifests/ingest-service.yaml
 kubectl apply -f k8s/manifests/product-service.yaml
 kubectl apply -f k8s/manifests/audit-service.yaml
 kubectl apply -f k8s/manifests/sync-service.yaml
+
 # Add other service manifests as needed
 Sync Applications:
 

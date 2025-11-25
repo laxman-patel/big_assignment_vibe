@@ -23,3 +23,11 @@ docker push $DOCKER_USER/analytics-service:latest
 # Frontend UI
 docker build -t $DOCKER_USER/frontend-ui:latest ./services/frontend-ui
 docker push $DOCKER_USER/frontend-ui:latest
+
+# Audit Service
+docker build -t $DOCKER_USER/audit-service:latest ./services/audit-service
+docker push $DOCKER_USER/audit-service:latest
+
+# Sync Service
+docker build -t $DOCKER_USER/sync-service:latest ./services/sync-service
+docker push $DOCKER_USER/sync-service:latest
